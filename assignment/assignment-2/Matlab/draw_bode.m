@@ -1,0 +1,13 @@
+clc;
+clear;
+K = 55;
+s = tf('s');
+Gp = 1 / s / (s + 10);
+Gz = c2d(Gp, 0.1, 'zoh');
+GZ = K * Gz;
+Gw = ((1 - 3 * exp(-1)) * s^2 - 40 * (1 - 2 * exp(-1)) * s + 400 * ( 1 - exp(-1))) / ((200 + 200 * exp(-1)) * s^2 + (4000 - 4000 * exp(-1)) * s);
+GW = K * Gw;
+margin(GW);
+% p = getoptions(h);
+% p.PhaseMatching = 'on';
+% setoptions(h, p);
